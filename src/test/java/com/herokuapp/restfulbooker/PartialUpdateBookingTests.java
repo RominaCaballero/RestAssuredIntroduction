@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -29,6 +30,8 @@ public class PartialUpdateBookingTests extends BaseTest {
         Response responseUpdate = RestAssured.given().auth().preemptive().basic("admin", "password123").contentType(ContentType.JSON).body(body.toString())
                 .patch("https://restful-booker.herokuapp.com/booking/" + bookingid);
         responseUpdate.print();
+
+        Assert.assertEquals(responseUpdate.getStatusCode(), 200, "Status code should be 200");
 
         // Verify all fields
         SoftAssert softAssert = new SoftAssert();
