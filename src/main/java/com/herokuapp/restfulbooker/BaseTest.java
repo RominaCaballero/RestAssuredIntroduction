@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 public class BaseTest {
     protected Response createBooking() {
+        // Create JSON body
         JSONObject body  = new JSONObject();
         body.put("firstname", "Mina");
         body.put("lastname", "Cebarolla");
