@@ -17,6 +17,9 @@ public class Booking {
         this.additionalneeds = additionalneeds;
     }
 
+    public Booking() {
+    }
+
     @Override
     public String toString() {
         return "Booking [firstname=" + firstname + ", lastname=" + lastname + ", totalprice=" + totalprice + ", depositpaid=" + depositpaid
