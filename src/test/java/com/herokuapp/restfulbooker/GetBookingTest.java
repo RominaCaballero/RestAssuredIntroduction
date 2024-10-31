@@ -1,18 +1,24 @@
 package com.herokuapp.restfulbooker;
 
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class GetBookingTest {
+public class GetBookingTest extends BaseTest {
 
     //Some test fails because this is a public API playground so people mess with the fields.
     @Test
     public void bookingTest() {
+        spec = new RequestSpecBuilder().
+                setBaseUri("https://restful-booker.herokuapp.com").
+                build();
+
         // Get response with booking
-        Response response = RestAssured.get("https://restful-booker.herokuapp.com/booking/5");
+        Response response = RestAssured.given(spec).get("/booking/5");
         response.print();
 
         // Verify the response is 200
