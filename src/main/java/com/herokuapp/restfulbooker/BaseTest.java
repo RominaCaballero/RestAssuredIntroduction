@@ -30,6 +30,7 @@ public class BaseTest {
         bookingDates.put("checkin","2024-03-25");
         bookingDates.put("checkout","2024-03-27");
         body.put("bookingdates", bookingDates);
+        body.put("additionalneeds","Breakfast");
 
         // Get response
         Response response = RestAssured.given(spec).contentType(ContentType.JSON).
